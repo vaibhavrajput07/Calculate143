@@ -7,7 +7,7 @@ export default function MainPage() {
   const [partnerName, setPartnerName] = useState("");
   const [result, setResult] = useState("");
   
-  const apiUrl = process.env.REACT_APP_API_URL;
+  
   // Function to calculate love and store it in MongoDB
   const calculateLove = async () => {
     if (yourName.trim() === "" || partnerName.trim() === "") {
@@ -32,7 +32,7 @@ export default function MainPage() {
     loveScore = Math.min(Math.max(loveScore, 50), 100);
 
     setResult(`${yourName} ❤️ ${partnerName} = ${loveScore}% Love`);
-
+     const apiUrl = process.env.REACT_APP_API_URL;
     // Send the love score data to the backend API for storage in MongoDB
     try {
       const response = await fetch('${apiUrl}/api/save-love', {

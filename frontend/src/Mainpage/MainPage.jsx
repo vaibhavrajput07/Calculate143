@@ -34,7 +34,7 @@ export default function MainPage() {
 
     // Send the love score data to the backend API for storage in MongoDB
     try {
-      const response = await fetch('http://localhost:5000/api/save-love', {
+      const response = await fetch('${apiUrl}/api/save-love', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

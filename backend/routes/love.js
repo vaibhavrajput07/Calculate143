@@ -115,13 +115,34 @@ router.post("/save-love", async (req, res) => {
 });
 
 // Delete API
+// router.delete("/delete-love/:id", async (req, res) => {
+//   try {
+//     await Love.findByIdAndDelete(req.params.id);
+//     res.json({ message: "Record deleted successfully!" });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Failed to delete record" });
+//   }
+// });
+
 router.delete("/delete-love/:id", async (req, res) => {
+  const loveId = req.params.id;
+
+  if (!loveId) {
+    return res.status(400).json({ error: "ID parameter is missing" });
+  }
+
   try {
-    await Love.findByIdAndDelete(req.params.id);
+    const deleted = await Love.findByIdAndDelete(loveId);
+
+    if (!deleted) {
+      return res.status(404).json({ error: "Record not found" });
+    }
+
     res.json({ message: "Record deleted successfully!" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to delete record" });
+  } catch (error) {
+    console.error("Delete error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

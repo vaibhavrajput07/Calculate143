@@ -1,0 +1,203 @@
+/* Basic Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  .landing-page {
+    width: 100%;
+    height: 100vh;
+    background: url('V5.jpg') no-repeat center center/cover;
+    position: relative;
+    color: white;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: hotpink;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav a {
+    color: hotpink;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .nav a:hover {
+    color: white;
+  }
+  
+  /* Hamburger Menu */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: hotpink;
+    margin: 4px 0;
+    transition: all 0.3s;
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .content h4 {
+    letter-spacing: 2px;
+    font-size: 18px;
+    color: pink;
+    margin-bottom: 10px;
+  }
+  
+  .content h1 {
+    font-size: 48px;
+    margin: 20px 0;
+  }
+  
+  .content h1 span {
+    color: hotpink;
+  }
+  
+  .content p {
+    max-width: 600px;
+    margin: 20px auto;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  
+  .buttons {
+    margin-top: 30px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 30px;
+    margin: 10px 10px 0 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+  }
+  
+  .btn-primary {
+    background-color: hotpink;
+    border: none;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: deeppink;
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background: white;
+    color: hotpink;
+  }
+  
+  /* Responsive Design */
+  
+  /* Tablets */
+  @media (max-width: 768px) {
+    .header {
+      padding: 15px 30px;
+    }
+  
+    .content h1 {
+      font-size: 36px;
+    }
+  
+    .content p {
+      font-size: 14px;
+    }
+  
+    .btn-primary, .btn-secondary {
+      padding: 10px 25px;
+      margin-left: 5px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 600px) {
+    .hamburger {
+      display: flex;
+    }
+  
+    .nav {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
+      height: auto;
+      padding: 20px 0;
+      border-radius: 8px 0 0 8px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 999;
+    }
+  
+    .nav.open {
+      transform: translateX(0);
+    }
+  
+    .nav a {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+  
+    .content h1 {
+      font-size: 28px;
+    }
+  
+    .buttons {
+      flex-direction: column;
+    }
+  
+    .btn-primary, .btn-secondary {
+      width: 75%;
+      margin: 8px 0;
+      margin: 8px;
+    }
+  }
+  

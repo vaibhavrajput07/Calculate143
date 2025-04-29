@@ -1,0 +1,142 @@
+/* Container */
+.table-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.table-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Table */
+.love-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+/* Table Headings and Cells */
+.love-table th,
+.love-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+/* Table Heading Styling */
+.love-table th {
+  background-color: #f44336;
+  color: white;
+  font-weight: bold;
+}
+
+/* Table Row Styling */
+.love-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.love-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 8px 14px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #e60000;
+}
+.submit-btn{
+  margin-top: 20px;
+  
+}
+/* Password Input Styling */
+.password-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Focus state for better accessibility and visual feedback */
+.password-input:focus {
+  border-color: #f44336; /* Focus border color */
+  background-color: #fff; /* Slightly brighter background */
+  outline: none;
+}
+
+/* Password input label styling */
+.password-input::placeholder {
+  color: #888; /* Placeholder color */
+  font-style: italic;
+}
+
+/* Error Message Styling */
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+/* RESPONSIVE PART */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 15px;
+    max-width: 95%;
+  }
+
+  .table-title {
+    font-size: 1.8rem;
+  }
+
+  .love-table th,
+  .love-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .delete-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-title {
+    font-size: 1.5rem;
+  }
+
+  .love-table th,
+  .love-table td {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .delete-btn {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}

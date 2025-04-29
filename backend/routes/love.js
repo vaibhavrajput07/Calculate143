@@ -5,32 +5,32 @@ const Love = require('../models/Love');
 const router = express.Router();
 
 // Middleware to check password
-const authenticatePassword = async (req, res, next) => {
-  const { password } = req.body;
+// const authenticatePassword = async (req, res, next) => {
+//   const { password } = req.body;
 
-  if (!password) {
-    return res.status(400).json({ error: "Password is required!" });
-  }
+//   if (!password) {
+//     return res.status(400).json({ error: "Password is required!" });
+//   }
 
-  try {
-    // Fetch the stored password record from DB
-    const passwordRecord = await Password.findOne();
+//   try {
+//     // Fetch the stored password record from DB
+//     const passwordRecord = await Password.findOne();
 
-    if (!passwordRecord) {
-      return res.status(500).json({ error: "Password record not found!" });
-    }
+//     if (!passwordRecord) {
+//       return res.status(500).json({ error: "Password record not found!" });
+//     }
 
-    const isMatch = await bcrypt.compare(password, passwordRecord.password);
+//     const isMatch = await bcrypt.compare(password, passwordRecord.password);
 
-    if (!isMatch) {
-      return res.status(401).json({ error: "Invalid password" });
-    }
+//     if (!isMatch) {
+//       return res.status(401).json({ error: "Invalid password" });
+//     }
 
-    next(); // Proceed to the next middleware (get love data)
-  } catch (err) {
-    return res.status(500).json({ error: "Failed to authenticate password" });
-  }
-};
+//     next(); // Proceed to the next middleware (get love data)
+//   } catch (err) {
+//     return res.status(500).json({ error: "Failed to authenticate password" });
+//   }
+// };
 
 // Secure API to fetch all love records
 router.post("/get-love-data", async (req, res) => {

@@ -6,7 +6,8 @@ export default function MainPage() {
   const [yourName, setYourName] = useState("");
   const [partnerName, setPartnerName] = useState("");
   const [result, setResult] = useState("");
-
+  
+  const apiUrl = process.env.REACT_APP_API_URL;
   // Function to calculate love and store it in MongoDB
   const calculateLove = async () => {
     if (yourName.trim() === "" || partnerName.trim() === "") {

@@ -6,44 +6,41 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require('path');
 
+// Import route files
 const loveRoutes = require('./routes/love');
-const passwordRoutes = require('./routes/Password'); // Import the password route
+const passwordRoutes = require('./routes/Password');
 
 // Initialize the Express app
 const app = express();
-
-const port = process.env.PORT || 5000;
-
-  // Serve frontend in production
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/build')));
-    app.get('*', (req, res) =>
-      res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'))
-    );
-  }
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
-const dbURI = process.env.ATLASDB_URL;
+// Route prefixes
+app.use('/api/love', loveRoutes);          // Example: /api/love/save-love
+app.use('/api/password', passwordRoutes);  // Example: /api/password/set-password
 
-// Connect to MongoDB
+// MongoDB connection
+const dbURI = process.env.ATLASDB_URL;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log("MongoDB Connected...");
+    console.log("✅ MongoDB connected successfully");
   })
   .catch(err => {
-    console.log("MongoDB connection error: ", err);
+    console.error("❌ MongoDB connection error:", err);
   });
 
-
-
-// Routes
-app.use('/api', loveRoutes);
-app.use('/api/password', passwordRoutes); // Password route for setting and checking password
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'))
+  );
+}
 
 // Start the server
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`🚀 Server is running on port ${port}`);
 });

@@ -33,11 +33,13 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'))
-  );
+  const frontendPath = path.join(__dirname, '..', 'frontend', 'build');
+  app.use(express.static(frontendPath));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  });
 }
+
 
 // Start the server
 const port = process.env.PORT || 5000;

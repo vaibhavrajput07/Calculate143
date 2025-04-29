@@ -8,9 +8,11 @@ function ShowAllData() {
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const fetchRecords = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/get-love-data", {
+      const response = await axios.post("${apiUrl}/api/get-love-data", {
         enteredPassword: password,
       });
 
@@ -36,7 +38,7 @@ function ShowAllData() {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/delete-love/${id}`);
+      await axios.delete(`${apiUrl}/api/delete-love/${id}`);
       setRecords(records.filter(record => record._id !== id)); // Remove deleted record from local state
     } catch (err) {
       console.error(err);
